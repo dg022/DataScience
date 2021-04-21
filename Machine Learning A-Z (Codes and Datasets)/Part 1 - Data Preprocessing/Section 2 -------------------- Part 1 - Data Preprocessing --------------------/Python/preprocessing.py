@@ -51,5 +51,5 @@ sc = StandardScaler()
 x_train[:, 3:] = sc.fit_transform(x_train[:, 3:])
 x_test[:, 3:] = sc.transform(x_test[:, 3:])
 
-print(x_train)
+print(x_test)
 
