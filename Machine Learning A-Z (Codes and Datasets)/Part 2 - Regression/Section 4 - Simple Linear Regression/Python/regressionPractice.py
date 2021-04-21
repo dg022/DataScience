@@ -23,6 +23,20 @@ regressor = LinearRegression()
 regressor.fit(x_train, y_train)
 
 
+y_pred = regressor.predict(x_test)
+
+plt.scatter(x_train, y_train, color = 'red')
+plt.plot(x_train, regressor.predict(x_train), color='blue')
+plt.title('Salary vs Experience (Training Set)')
+plt.xlabel('Salary')
+plt.show()
+
+plt.scatter(x_test, y_test, color = 'red')
+plt.plot(x_train,regressor.predict(x_train), color='blue')
+plt.title('Salary vs Experience (Testing Set)')
+plt.xlabel('Salary')
+plt.show()
+
 
 
 def predictSalary(exp, intercept, coeff):
