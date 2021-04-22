@@ -5,9 +5,10 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 from  sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LinearRegression
 
 # Importing the dataset
-data = pd.read_csv('Data.csv')
+data = pd.read_csv('50_Startups.csv')
 x = data.iloc[:, :-1].values
 y = data.iloc[:, -1].values
 
@@ -17,11 +18,16 @@ x = np.array(ct.fit_transform(x))
 
 x_train, x_test, y_train, y_test  = train_test_split(x, y, test_size=0.2,  random_state=1)
 
-# Preprocessing of the data is now complete, we now need to do feature scaling
+regressor = LinearRegression()
+regressor.fit(x_train, y_train)
 
-sc = StandardScaler()
-x_train[:, :3] = sc.fit_transform(x_train[:, :3])
-x_test[:, :3 ] = sc.transform(x_test[:, :3])
+percentErros = (abs(regressor.predict(x_test) - y_test) /y_test)*100
+AveragePercentError  = sum(percentErros)/len(percentErros)
+print("the accruacy of the model is:", 100 - AveragePercentError)
 
-#Not enteraly sure about what to do with y_triana dn y_test, do we want to change those
-#probably not, because we want that value to give an estimate.
+#print( (abs(regressor.predict(x_test) - y_test) /y_test)*100)
+
+
+
+
+ #in multiple linear regression there is no need to apply feature scaling, o.k
