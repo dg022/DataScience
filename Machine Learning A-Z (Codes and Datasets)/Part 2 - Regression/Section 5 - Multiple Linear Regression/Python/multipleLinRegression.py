@@ -23,6 +23,10 @@ regressor.fit(x_train, y_train)
 
 percentErros = (abs(regressor.predict(x_test) - y_test) /y_test)*100
 AveragePercentError  = sum(percentErros)/len(percentErros)
+y_pred = regressor.predict(x_test)
+
+np.set_printoptions(precision=2)
+print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
 print("the accruacy of the model is:", 100 - AveragePercentError)
 
 #print( (abs(regressor.predict(x_test) - y_test) /y_test)*100)
