@@ -26,3 +26,10 @@ regressor  = SVR(kernel='rbf')
 regressor.fit(x, y)
 r = sc_y.inverse_transform(regressor.predict(sc.transform([[6.5]])))
 print(r)
+
+plt.scatter(sc.inverse_transform(x), sc_y.inverse_transform(y), color = 'red')
+plt.plot(sc.inverse_transform(x), sc_y.inverse_transform(regressor.predict(x)), color='blue')
+
+plt.title('Experience Versus Salary')
+plt.xlabel('Experience in Years')
+plt.show()
