@@ -25,4 +25,4 @@ plt.plot(X_grid, regressor.predict(X_grid), color = 'blue')
 plt.title('Truth or Bluff (Decision Tree Regression)')
 plt.xlabel('Position level')
 plt.ylabel('Salary')
-plt.show(ude
+plt.show()
